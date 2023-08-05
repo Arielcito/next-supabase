@@ -74,7 +74,7 @@ export default function AccountForm({ session }: { session: Session | null }) {
   }
 
   return (
-    <div className="form-widget">
+    <div className="form-widget flex justify-center items-center">
       <div>
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={session?.user.email} disabled />

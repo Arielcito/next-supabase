@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+
 import AuthForm from './auth-form'
 
 export default function Home() {
