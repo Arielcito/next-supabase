@@ -6,16 +6,15 @@ import { Database } from "../types/supabase"
 
 export default function AuthForm() {
   const supabase = createClientComponentClient<Database>()
-
+  const redirect = process.env.REDIRECT_URL;
   return (
     <Auth
       supabaseClient={supabase}
-      
       appearance={{ theme: ThemeSupa }}
       theme="dark"
       showLinks={true}
       providers={['google']}
-      redirectTo="http://localhost:3000/auth/callback"
+      redirectTo={window.location.origin + "/auth/callback"}
     />
   )
 }
