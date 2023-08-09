@@ -2,15 +2,16 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Database } from '../../types/supabase'
 import { Session, createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import Avatar from './avatar'
 
-export default function AccountForm({ session }: { session: Session | null }) {
+export default function AccountForm({ session }: { session: Session }) {
   const supabase = createClientComponentClient<Database>()
   const [loading, setLoading] = useState(true)
   const [fullname, setFullname] = useState<string | null>(null)
   const [username, setUsername] = useState<string | null>(null)
   const [website, setWebsite] = useState<string | null>(null)
   const [avatar_url, setAvatarUrl] = useState<string | null>(null)
-  const user = session?.user
+  const user = session.user
 
   const getProfile = useCallback(async () => {
     try {
@@ -75,6 +76,15 @@ export default function AccountForm({ session }: { session: Session | null }) {
 
   return (
     <div className="form-widget flex justify-center items-center">
+      <Avatar
+      uid={user.id}
+      url={avatar_url}
+      size={150}
+      onUpload={(url) => {
+        setAvatarUrl(url)
+        updateProfile({ fullname, username, website, avatar_url: url })
+      }}
+    />
       <div>
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={session?.user.email} disabled />

@@ -21,5 +21,3 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Objetivo
 
 Crear una ruta protegida que necesita autenticacion(/account), utilizar tanto google sign in como login con correo.
-
-
